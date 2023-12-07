@@ -8,11 +8,12 @@ $database= "Fakebook";
 
 try
 {
-    $conexao = mysqli_connect($url, $usuario, $senha, $database) or die('Erro ao Conectar ao Banco de Dados');
+    $conexao = mysqli_connect($url, $usuario, $senha, $database);
 }
-catch(Exception $e)
+catch(Exception)
 {
-    echo 'Erro ao Conectar ao Banco de Dados. <br>Erro: '. $e;
+    echo 'Erro ao Conectar ao Banco de Dados. <br>Erro:001 ';
+    return;
 }
 
 

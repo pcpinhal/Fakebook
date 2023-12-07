@@ -19,8 +19,19 @@ if(@$_SESSION['id_login'] != "")
     <div class="container">
         <header>
             <div class="logo">
-                <img src="/img/conta.png" alt="logo" width="125" height="125">
-                <h4>NOME DE USUÁRIO</h4>
+                <?php
+                if($id!="naologado")
+                {
+                    $sql = "SELECT * FROM tb_login WHERE id_login = $id;";
+                    $resultado = mysqli_query($conexao, $sql);
+                    $dados = mysqli_fetch_assoc($resultado);
+                    echo '<img src="/img/'+ $dados["foto"] +'" alt="logo" width="125" height="125">';
+                    echo '<h4>'+ $dados['nome'] +'</h4>';
+                }else{
+                    echo 'não logado';
+                }
+                
+                ?>
             </div>
             <nav>
                 <ul>
