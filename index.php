@@ -1,3 +1,12 @@
+<?php 
+include_once 'conexao.php';
+if(@$_SESSION['id_login'] != "")
+{
+    $id = $_SESSION['id_login'];    
+}else{
+    $id = "naologado";
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -8,11 +17,17 @@
 </head>
 <body>
     <div class="container">
+        <header>
+            cabeça
+        </header>
+        <main>
+            <div class="enviar">
 
+            </div>
+            <article>
+
+            </article>
+        </main>
     </div>
 </body>
 </html>
-
-<?php
-
-?>
