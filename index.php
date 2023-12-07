@@ -13,6 +13,7 @@ if(@$_SESSION['id_login'] != "")
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Fakebook - seu site de noticias</title>
 </head>
 <body>
@@ -28,18 +29,26 @@ if(@$_SESSION['id_login'] != "")
                     echo '<img src="/img/'+ $dados["foto"] +'" alt="logo" width="125" height="125">';
                     echo '<h4>'+ $dados['nome'] +'</h4>';
                 }else{
-                    echo 'não logado';
+                    echo '<p class="inscrever"><a href="cadastrar.php"><i class="fa fa-user-plus" aria-hidden="true"></i> Inscrever</a></p>';
                 }
-                
-                ?>
+                ?>                
             </div>
-            <nav>
-                <ul>
-                    <li><a href="login.php">LOGIN</a></li>
-                    <li><a href="perfil.php">PERFIL</a></li>
-                    <li><a href="logout.php">SAIR</a></li>
-                </ul>
-            </nav>
+            <img src="img/fakebook.png" alt="Fakebook" width="350">
+            <?php 
+            if($id!="naologado")
+            {           
+                echo'
+                <nav>
+                    <ul>
+                        <li><a href="login.php">LOGIN</a></li>
+                        <li><a href="perfil.php">PERFIL</a></li>
+                        <li><a href="logout.php">SAIR</a></li>
+                    </ul>
+                </nav>';
+            }else{
+                echo '<p class="inscrever"><a href="login.php"><i class="fa fa-sign-in" aria-hidden="true"></i> Entrar</a></p>';
+            }               
+            ?>            
         </header>
         <main>
             <div class="enviar">

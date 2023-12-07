@@ -8,12 +8,15 @@ body{
 .container{
     width: 1200px;
     height: 150px;
-    background: #0636E2;
+    background: #000;
     margin: 0 auto;
 }
 header{
     display: flex;
     justify-content: space-between;
+    background-color: #0C489E;
+    color:white;
+    align-items: center;
 }
 .logo{
     display: flex;
@@ -30,4 +33,39 @@ header{
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+}
+nav{    
+    display: flex;
+    align-items: center;
+    padding-right: 30px;
+}
+nav ul{
+    display: flex;
+    gap:40px;
+    color:#000;
+    align-items: center;
+}
+nav ul li{
+    list-style-type: none;
+    align-items: center;
+    
+}
+nav ul li a, a:link, a:visited{
+    color: white;
+    text-decoration: none;
+    align-items: center;
+}
+nav ul li a:hover{
+    background-color:white;
+    color:#0C489E;
+    padding: 10px;
+    border-radius: 30px;
+    color: white;
+}
+.inscrever{
+    margin: 50px; 
+    font-size: 20px;
+}
+main{
+    background: #EDEDED;
 }
