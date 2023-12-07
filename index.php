@@ -18,7 +18,17 @@ if(@$_SESSION['id_login'] != "")
 <body>
     <div class="container">
         <header>
-            cabeça
+            <div class="logo">
+                <img src="/img/conta.png" alt="logo" width="125" height="125">
+                <h4>NOME DE USUÁRIO</h4>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="login.php">LOGIN</a></li>
+                    <li><a href="perfil.php">PERFIL</a></li>
+                    <li><a href="logout.php">SAIR</a></li>
+                </ul>
+            </nav>
         </header>
         <main>
             <div class="enviar">
