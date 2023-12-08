@@ -51,11 +51,22 @@ if(@$_SESSION['id_login'] != "")
             ?>            
         </header>
         <main>
-            <div class="enviar">
-
-            </div>
-            <article>
-
+            <form action="index.php" method="post">
+                <div class="enviar">
+                
+                    <div class="foto">
+                        <img src="img/foto.png" alt="Foto">
+                        <input type="file" name="btnFoto" id="btnFoto" accept="image/*" title="&nbsp;">
+                    </div>
+                    <div class="msg">
+                        <textarea id="txtMsg" name="txtMsg" rows="9" cols="118" placeholder="Diga algo sobre ..."></textarea>
+                        <!-- <i class="fa fa-paper-plane-o" aria-hidden="true"></i> -->
+                        <input type="submit" value="Enviar" id="btnEnviar">
+                    </div>                
+                </div>
+            </form>
+            <article>            
+                
             </article>
         </main>
     </div>
