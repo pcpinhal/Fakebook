@@ -65,17 +65,35 @@ if(@$_SESSION['id_login'] != "")
                     </div>                
                 </div>
             </form>
-            <article>            
-                <div class="de">
-                    quem mandou
-                </div>
-                <div class="mensagem">
-                    a mensagem
-                </div>
-                <div class="imagem">
-                    foto
-                </div>
-            </article>
+            <?php
+            $sql = "SELECT * FROM tb_noticia 
+                    INNER JOIN tb_login
+                    ON tb_noticia.fk_de = tb_login.id_login
+                    ORDER BY id_noticia DESC;";
+            $resultado = mysqli_query($conexao, $sql);
+            while($dados = mysqli_fetch_assoc($resultado))
+            {
+                if ($dados["foto"]=="")
+                    $dados["foto"] = "conta.png";
+                if ($dados["imagem"]=="")
+                $dados["imagem"] = "foto.png";
+                echo '
+                <article>            
+                    <div class="de">
+                        foto: <img src="img/'.$dados["foto"].'" alt="" width=125/><br>
+                        quem mandou:'.$dados["nome"].'<br>
+                        data e hor: '.$dados["datahora"].'
+                    </div>
+                    <div class="mensagem">
+                        a mensagem: '.$dados["noticia"].'
+                    </div>
+                    <div class="imagem">
+                        imagem:<img src="img/'.$dados["imagem"].'" alt="" width=400/>
+                    </div>
+                </article>
+                ';
+            } 
+            ?>            
         </main>
         <footer>
             rodape FIM

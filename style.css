@@ -109,6 +109,9 @@ article{
     width: 1200px;
     margin-top: 5px;
 }
+.de img{
+    border-radius: 180px;
+}
 footer{
     background-color: #000;
     width: 1200px;
