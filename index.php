@@ -66,9 +66,20 @@ if(@$_SESSION['id_login'] != "")
                 </div>
             </form>
             <article>            
-                
+                <div class="de">
+                    quem mandou
+                </div>
+                <div class="mensagem">
+                    a mensagem
+                </div>
+                <div class="imagem">
+                    foto
+                </div>
             </article>
         </main>
+        <footer>
+            rodape FIM
+        </footer>
     </div>
 </body>
 </html>

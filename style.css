@@ -104,3 +104,14 @@ main{
     width: 95px;
     height: 160px;
 }
+article{
+    background-color: white;
+    width: 1200px;
+    margin-top: 5px;
+}
+footer{
+    background-color: #000;
+    width: 1200px;
+    height: 60px;
+    color: orange;
+}
