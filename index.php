@@ -51,8 +51,7 @@ if(@$_SESSION['id_login'] != "")
         </header>
         <main>
             <form action="index.php" method="post">
-                <div class="enviar">
-                
+                <div class="enviar">                
                     <div class="foto">
                         <img src="img/foto.png" alt="Foto">
                         <input type="file" name="btnFoto" id="btnFoto" accept="image/*" title="&nbsp;">
@@ -62,8 +61,11 @@ if(@$_SESSION['id_login'] != "")
                         <!-- <i class="fa fa-paper-plane-o" aria-hidden="true"></i> -->
                         <input type="submit" value="Enviar" id="btnEnviar">
                     </div>                
-                </div>
+                </div>                
             </form>
+            <?php
+                if()  
+            ?>
             <?php
             $sql = "SELECT * FROM tb_noticia 
                     INNER JOIN tb_login

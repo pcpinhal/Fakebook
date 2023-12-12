@@ -21,30 +21,30 @@ if(@$_SESSION['id_login'] != "")
         <header>
             <div class="logo">
                 <?php
-                if($id!="")
-                {                    
-                    $sql = "SELECT * FROM tb_login WHERE id_login = $id;";
-                    $resultado = mysqli_query($conexao, $sql);
-                    $dados = mysqli_fetch_assoc($resultado);                    
-                    echo '<img src="/img/'. $dados['foto'] .'" alt="logo" width="125" height="125">';
-                    echo '<h4>'. $dados['nome'] .'</h4>';
-                }
+                    if($id!="")
+                    {                    
+                        $sql = "SELECT * FROM tb_login WHERE id_login = $id;";
+                        $resultado = mysqli_query($conexao, $sql);
+                        $dados = mysqli_fetch_assoc($resultado);                    
+                        echo '<img src="/img/'. $dados['foto'] .'" alt="logo" width="125" height="125">';
+                        echo '<h4>'. $dados['nome'] .'</h4>';
+                    }
                 ?>                
             </div>
             <img src="img/fakebook.png" alt="Fakebook" width="350">
             <?php 
-            if($id!="")
-            {           
-                echo'
-                <nav>
-                    <ul>                        
-                        <li><a href="perfil.php">PERFIL</a></li>
-                        <li><a href="logout.php">SAIR</a></li>
-                    </ul>
-                </nav>';
-            }else{
-                echo '<p class="inscrever"><a href="login.php"><i class="fa fa-sign-in" aria-hidden="true"></i> Entrar</a></p>';
-            }               
+                if($id!="")
+                {           
+                    echo'
+                    <nav>
+                        <ul>                        
+                            <li><a href="index.php">INICIO</a></li>
+                            <li><a href="logout.php">SAIR</a></li>
+                        </ul>
+                    </nav>';
+                }else{
+                    echo '<p class="inscrever"><a href="login.php"><i class="fa fa-sign-in" aria-hidden="true"></i> Entrar</a></p>';
+                }               
             ?>            
         </header>
         <main>  
@@ -59,23 +59,20 @@ if(@$_SESSION['id_login'] != "")
                     if($resultado === TRUE)
                     {
                         echo "Atualizado<br>";
-                        // var_dump($_FILES);
                         if($_FILES['txtImagem']['full_path'] != "")
                         {
                             echo "salva foto<br>";
-                            $a = "teste";
+                            $nome_aleatorio = date('dmYHis')."F";
                             $uploaddir = 'img/';
                             $nomearquivo = $_FILES['txtImagem']['name'];
-                            $uploadfile = $uploaddir . basename($a.$nomearquivo);
-                            
+                            $uploadfile = $uploaddir . basename($nome_aleatorio.$nomearquivo);                            
                             if (move_uploaded_file($_FILES['txtImagem']['tmp_name'], $uploadfile)) {
                                 echo "Arquivo válido e enviado com sucesso.\n";
                                 $sql = "UPDATE tb_login SET foto= '$nomearquivo' WHERE id_login = $id";
-                                $resultado = mysqli_query($conexao, $sql);
+                                $resultado = mysqli_query($conexao, $sql);                                
                             } else {
                                 echo "Possível ataque de upload de arquivo!\n";
                             }
-
                         }else{
                             echo "Não salva foto !!!<br>";
                         }
