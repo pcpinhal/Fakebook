@@ -1,11 +1,14 @@
 <?php 
 include_once 'conexao.php';
+/*
 if(@$_SESSION['id_login'] != "")
 {
-    $id = $_SESSION['id_login'];    
+    header('Location: index.php');
+
 }else{
     $id = "naologado";
 }
+*/
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -30,14 +33,18 @@ if(@$_SESSION['id_login'] != "")
             <?php
             try
             {
-                if(@$_POST['btnEnviar']!="")
+                if(@$_POST["btnEnviar"] == "Entrar")
                 {
                     $_POST['btnEnviar'] = "";
                     $login = mysqli_real_escape_string($conexao, $_POST['txtUsuario']);
                     $senha = mysqli_real_escape_string($conexao, $_POST['txtSenha']);
-                    $sql = "SELECT * FROM tb_login WHERE login = $login AND senha = $senha;";
+                    $sql = 'SELECT * FROM tb_login WHERE login = "admin" AND senha = "123";';
+                    var_dump($login);
+                    var_dump($senha);
+                    //var_dump($resultado);
                     $resultado = mysqli_query($conexao,$sql);
                     $dados = mysqli_fetch_assoc($resultado);
+                    var_dump($dados);
                     if(($dados['login'] == $login) and ($dados['senha'] == $senha))
                     {
                         $_SESSION['id_login'] = $dados['id_login'];
@@ -47,7 +54,7 @@ if(@$_SESSION['id_login'] != "")
             }catch(Exception)
             {
                     echo "usuario ou senha incorretos !";
-            }
+            }            
             ?>
             <form action="login.php" method="post" enctype="multipart/form-data">
                 <label for="txtUsuario">usuario:</label>
@@ -56,7 +63,7 @@ if(@$_SESSION['id_login'] != "")
                 <label for="txtSenha">Senha:</label>
                 <input type="password" name="txtSenha" id="txtSenha">
                 <br>
-                <input type="submit" value="Entrar" id="btnEnviar">
+                <input type="submit" value="Entrar" id="btnEnviar" name="btnEnviar">
                 <input type="reset" value="Limpar">
             </form>  
         </main>

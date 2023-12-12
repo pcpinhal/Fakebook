@@ -22,12 +22,12 @@ if(@$_SESSION['id_login'] != "")
             <div class="logo">
                 <?php
                 if($id!="naologado")
-                {
+                {                    
                     $sql = "SELECT * FROM tb_login WHERE id_login = $id;";
                     $resultado = mysqli_query($conexao, $sql);
-                    $dados = mysqli_fetch_assoc($resultado);
-                    echo '<img src="/img/'+ $dados["foto"] +'" alt="logo" width="125" height="125">';
-                    echo '<h4>'+ $dados['nome'] +'</h4>';
+                    $dados = mysqli_fetch_assoc($resultado);                                        
+                    echo '<img src="/img/'. $dados['foto'] .'" alt="logo" width="125" height="125">';
+                    echo '<h4>'. $dados['nome'] .'</h4>';
                 }else{
                     echo '<p class="inscrever"><a href="cadastrar.php"><i class="fa fa-user-plus" aria-hidden="true"></i> Inscrever</a></p>';
                 }
@@ -39,8 +39,7 @@ if(@$_SESSION['id_login'] != "")
             {           
                 echo'
                 <nav>
-                    <ul>
-                        <li><a href="login.php">LOGIN</a></li>
+                    <ul>                        
                         <li><a href="perfil.php">PERFIL</a></li>
                         <li><a href="logout.php">SAIR</a></li>
                     </ul>

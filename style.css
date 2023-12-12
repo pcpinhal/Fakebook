@@ -52,6 +52,7 @@ nav ul li{
 }
 nav ul li a, a:link, a:visited{
     color: white;
+    background-color: #0C489E;
     text-decoration: none;
     align-items: center;
 }
@@ -60,7 +61,6 @@ nav ul li a:hover{
     color:#0C489E;
     padding: 10px;
     border-radius: 30px;
-    color: white;
 }
 .inscrever{
     margin: 50px; 
