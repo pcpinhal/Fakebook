@@ -33,7 +33,7 @@ if(@$_SESSION['id_login'] != "")
                 }
                 ?>                
             </div>
-            <img src="img/fakebook.png" alt="Fakebook" width="350">
+            <a href="/"><img src="img/fakebook.png" alt="Fakebook" width="350"></a>
             <?php 
             if($id!="naologado")
             {           
@@ -50,21 +50,50 @@ if(@$_SESSION['id_login'] != "")
             ?>            
         </header>
         <main>
-            <form action="index.php" method="post">
-                <div class="enviar">                
-                    <div class="foto">
-                        <img src="img/foto.png" alt="Foto">
-                        <input type="file" name="btnFoto" id="btnFoto" accept="image/*" title="&nbsp;">
-                    </div>
-                    <div class="msg">
-                        <textarea id="txtMsg" name="txtMsg" rows="9" cols="118" placeholder="Diga algo sobre ..."></textarea>
-                        <!-- <i class="fa fa-paper-plane-o" aria-hidden="true"></i> -->
-                        <input type="submit" value="Enviar" id="btnEnviar">
-                    </div>                
-                </div>                
-            </form>
             <?php
-                if()  
+            if($id!="naologado"){
+                echo '
+                    <form action="index.php" method="post" enctype="multipart/form-data">
+                        <div class="enviar">                
+                            <div class="foto">
+                                <img src="img/foto.png" alt="Foto">
+                                <input type="file" name="btnFoto" id="btnFoto" accept="image/*" title="&nbsp;">
+                            </div>
+                            <div class="msg">
+                                <textarea id="txtMsg" name="txtMsg" rows="9" cols="118" placeholder="Diga algo sobre ..."></textarea>
+                                <!-- <i class="fa fa-paper-plane-o" aria-hidden="true"></i> -->
+                                <input type="submit" value="Enviar" id="btnEnviar" name="btnEnviar">
+                            </div>                
+                        </div>                
+                    </form>
+                ';    
+            }   
+            ?>
+            <?php
+                if(@$_POST['btnEnviar'] == "Enviar")
+                {
+                    $_POST['btnEnviar'] = '';
+                    $de = $_POST['txtMsg'];
+                    if($_FILES['btnFoto']['full_path'] != "")
+                    {                                                 
+                        $nome_aleatorio = date('dmYHis')."F";
+                        $uploaddir = 'img/';
+                        $nomearquivo = $_FILES['btnFoto']['name'];
+                        $uploadfile = $uploaddir . basename($nome_aleatorio.$nomearquivo);                            
+                        if (move_uploaded_file($_FILES['btnFoto']['tmp_name'], $uploadfile)) {                            
+                            $sql = "INSERT INTO tb_noticia (noticia, fk_de, imagem) VALUES ('$de', '$id', '$nomearquivo');";                            
+                        } else {
+                            echo "Possível ataque de upload de arquivo!\n";
+                        }
+                    }else{
+                        $sql = "INSERT INTO tb_noticia (noticia, fk_de) VALUES ('$de', '$id');";                                                
+                    }
+                    $resultado = mysqli_query($conexao, $sql);
+                    if($resultado === TRUE)
+                    {
+                        echo "Noticia inserida com sucesso !";
+                    }
+                }  
             ?>
             <?php
             $sql = "SELECT * FROM tb_noticia 

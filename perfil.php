@@ -31,7 +31,7 @@ if(@$_SESSION['id_login'] != "")
                     }
                 ?>                
             </div>
-            <img src="img/fakebook.png" alt="Fakebook" width="350">
+            <a href="/"><img src="img/fakebook.png" alt="Fakebook" width="350"></a>
             <?php 
                 if($id!="")
                 {           

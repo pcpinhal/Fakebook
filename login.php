@@ -25,7 +25,7 @@ if(@$_SESSION['id_login'] != "")
             <div class="logo">
      
             </div>
-            <img src="img/fakebook.png" alt="Fakebook" width="350">
+            <a href="/"><img src="img/fakebook.png" alt="Fakebook" width="350"></a>
        
                 
         </header>
